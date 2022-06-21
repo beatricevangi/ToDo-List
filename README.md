@@ -1,4 +1,4 @@
-# ToDo-List
+# TO-DO List
 Gestore di attività da svolgere (todo list). 
 
 Le attività sono caratterizzate da nome, data e da un flag che indica se sono state completate o meno.
