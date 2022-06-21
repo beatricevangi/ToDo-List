@@ -1,0 +1,48 @@
+Restituire libri biblioteca
+22
+5
+2022
+1
+
+Ritirare bucato lavanderia
+29
+5
+2022
+1
+
+Spesa per grigliata
+23
+6
+2022
+0
+
+Restituire libri
+17
+6
+2022
+0
+
+Ufficio del Comune
+20
+6
+2022
+1
+
+Organizzare le vacanze
+16
+7
+2022
+1
+
+Partecipare Open Day
+16
+9
+2022
+0
+
+Festa compleanno Silvia
+8
+7
+2022
+0
+
