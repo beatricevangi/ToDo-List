@@ -1,33 +1,40 @@
 #include <iostream>
 #include "ToDoList.h"
 
-void menu(ToDoList &t) {
+
+int main() {
+    ToDoList t;
     bool quit = false;
     int choice;
-    std::cout << "WELCOME!" <<std::endl;
+    std::cout << "WELCOME!" << std::endl;
 
     while (!quit) {
         std::cout << std::endl;
         std::cout << "Select an option below" << std::endl;
-        std::cout << "1: View List" << std::endl;
-        std::cout << "2: Create a new Item" << std::endl;
-        std::cout << "3: Delete an Item" << std::endl;
-        std::cout << "4: Set done" << std::endl;
+        std::cout << "1: View list" << std::endl;
+        std::cout << "2: Create a new item" << std::endl;
+        std::cout << "3: Delete an item" << std::endl;
+        std::cout << "4: Set an item as done" << std::endl;
         std::cout << "5: Edit an item" << std::endl;
+        std::cout << "6: View items that are not completed" << std::endl;
+        std::cout << "7: Delete already completed items " << std::endl;
         std::cout << "0: Quit" << std::endl;
 
         std::cin >> choice;
         std::cin.ignore(1, '\n');
 
         switch (choice) {
+
             case 0: {
                 quit = true;
                 break;
             }
+
             case 1 : {
                 t.display();
                 break;
             }
+
             case 2 : {
                 std::string name, d, m, y;
                 std::cout << "Enter the name of the new Item: " << std::endl;
@@ -47,6 +54,7 @@ void menu(ToDoList &t) {
                 t.updateFile();
                 break;
             }
+
             case 3 : {
                 t.display();
                 int pos;
@@ -56,6 +64,7 @@ void menu(ToDoList &t) {
                 t.updateFile();
                 break;
             }
+
             case 4 : {
                 t.display();
                 int pos;
@@ -65,6 +74,7 @@ void menu(ToDoList &t) {
                 t.updateFile();
                 break;
             }
+
             case 5 : {
                 t.display();
                 int pos;
@@ -74,15 +84,21 @@ void menu(ToDoList &t) {
                 t.updateFile();
                 break;
             }
+
+            case 6: {
+                t.displayToDo();
+                break;
+            }
+
+            case 7: {
+                t.removeDone();
+                std::cout << "Operation completed!" << std::endl;
+                break;
+            }
+
             default: {
                 std::cerr << "Invalid input, please enter a new one." << std::endl;
             }
         }
     }
-}
-
-
-int main() {
-    ToDoList t;
-    menu(t);
 }

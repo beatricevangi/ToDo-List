@@ -126,13 +126,17 @@ void ToDoList::modifyItem(Item &i) {    //TODO FARE CONTROLLO SU POSIZIONE ALTRO
                 updateFile();
                 break;
             }
+
+            default: {
+                std::cerr << "Invalid input, please enter a new one." << std::endl;
+            }
         }
     } else
         std::cerr << "Error: the item you are trying to edit is not present in the list" << std::endl;
 }
 
 void ToDoList::display() {
-    std::cout << "---------------------TO DO LIST---------------------" << std::endl;
+    std::cout << "------------------------ T O   D O   L I S T ------------------------" << std::endl;
     int i = 1;
     for (Item tmp : list) {
         std::cout << "ITEM " << i << ":    ";
@@ -146,6 +150,29 @@ void ToDoList::display() {
         std::cout << tmp.getName() << std::endl;
         i++;
     }
+}
+
+void ToDoList::displayToDo() {
+    int i = 1;
+    for (Item tmp : list) {
+        if (!tmp.isDone()) {
+            std::cout << "ITEM " << i << ":    ";
+            tmp.getDate().displayDate();
+            std::cout << "     TO DO     ";
+            std::cout << tmp.getName() << std::endl;
+        }
+        i++;
+    }
+}
+
+void ToDoList::removeDone() {
+    int size = list.size();
+    for (int i = size; i > 0; i--) {
+        auto item = getItem(i);
+        if (item->isDone())
+            deleteItem(*item);
+    }
+
 }
 
 const std::list<Item> &ToDoList::getList() const {
@@ -164,15 +191,15 @@ std::list<Item>::iterator ToDoList::getItem(int pos) {
     return it;
 }
 
-void ToDoList::checkValidityItem(int pos, std::string operation) {
+void ToDoList::checkValidityItem(int pos, const std::string &operation) {
     if (pos <= list.size() && pos > 0) {
         auto item = getItem(pos);
-        if (operation == "edit"){
-
-            modifyItem(*item);}
-        else if (operation == "delete") {
+        if (operation == "edit") {
+            modifyItem(*item);
+        } else if (operation == "delete") {
             deleteItem(*item);
             std::cout << "Item deleted successfully." << std::endl;
+
         } else if (operation == "check") {
             item->setDone(true);
             std::cout << "Operation completed successfully" << std::endl;

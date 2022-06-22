@@ -36,7 +36,11 @@ public:
 
     std::list<Item>::iterator getItem(int pos);
 
-    void checkValidityItem(int pos, std::string operation);
+    void checkValidityItem(int pos, const std::string& operation);
+
+    void displayToDo();
+
+    void removeDone();
 };
 
 
