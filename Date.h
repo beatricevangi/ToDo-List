@@ -14,9 +14,9 @@ private:
     unsigned int year;
 
 public:
-    Date(unsigned int day, unsigned int month, unsigned int year);;
+    Date(unsigned int day = 1, unsigned int month = 1, unsigned int year = 2022);
 
-    void checkValidity(unsigned int _day, unsigned int _month, unsigned int _year);
+    static void checkValidity(unsigned int _day, unsigned int _month, unsigned int _year);
 
     static unsigned int countMonthDays(unsigned int month, unsigned int year);
 

@@ -16,20 +16,12 @@ private:
     bool done = false;
 
 public:
-    //Item(std::string name, int d = 1, int m = 0, int y = 1);
 
-    Item(std::string name, int day, int month, int year) : _name(std::move(name)), date(day, month, year) {
-    }; //usando std move passo by value
+    Item(std::string name = " ", int day = 1, int month = 1, int year = 1) : _name(std::move(name)), date(day, month, year) {}; //usando std move passo by value
 
-    //~Item();
+    void setDone(bool flag) { this->done = flag; };
 
-    void setDone(bool flag) {
-        this->done = flag;
-    };
-
-    bool isDone() {
-        return this->done;
-    };
+    bool isDone() { return this->done; };
 
     std::string getName() const;
 
@@ -39,9 +31,11 @@ public:
 
     static void editDate(Item &i, int day, int month, int year);
 
-    void rename(std::string &name);
+    void rename(std::string name);
 
     bool operator==(const Item &i) const;
+
+    virtual ~Item();
 };
 
 

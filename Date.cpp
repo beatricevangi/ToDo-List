@@ -20,7 +20,7 @@ unsigned int Date::countMonthDays(unsigned int _month, unsigned int _year) {
 }
 
 void Date::checkValidity(unsigned int _day, unsigned int _month, unsigned int _year) {
-    if (year < 0 || _month < 1 || _month > 12 || _day < 1 || _day > countMonthDays(_month, _year)) {
+    if (_year < 0 || _month < 1 || _month > 12 || _day < 1 || _day > countMonthDays(_month, _year)) {
         throw std::runtime_error("Illegal date!");
     }
 }

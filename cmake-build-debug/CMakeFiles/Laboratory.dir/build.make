@@ -70,62 +70,18 @@ CMakeFiles/Laboratory.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Laboratory.dir/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beatrice/CLionProjects/Laboratory/main.cpp -o CMakeFiles/Laboratory.dir/main.cpp.s
 
-CMakeFiles/Laboratory.dir/Date.cpp.o: CMakeFiles/Laboratory.dir/flags.make
-CMakeFiles/Laboratory.dir/Date.cpp.o: ../Date.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beatrice/CLionProjects/Laboratory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Laboratory.dir/Date.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Laboratory.dir/Date.cpp.o -c /home/beatrice/CLionProjects/Laboratory/Date.cpp
-
-CMakeFiles/Laboratory.dir/Date.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Laboratory.dir/Date.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beatrice/CLionProjects/Laboratory/Date.cpp > CMakeFiles/Laboratory.dir/Date.cpp.i
-
-CMakeFiles/Laboratory.dir/Date.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Laboratory.dir/Date.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beatrice/CLionProjects/Laboratory/Date.cpp -o CMakeFiles/Laboratory.dir/Date.cpp.s
-
-CMakeFiles/Laboratory.dir/Item.cpp.o: CMakeFiles/Laboratory.dir/flags.make
-CMakeFiles/Laboratory.dir/Item.cpp.o: ../Item.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beatrice/CLionProjects/Laboratory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Laboratory.dir/Item.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Laboratory.dir/Item.cpp.o -c /home/beatrice/CLionProjects/Laboratory/Item.cpp
-
-CMakeFiles/Laboratory.dir/Item.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Laboratory.dir/Item.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beatrice/CLionProjects/Laboratory/Item.cpp > CMakeFiles/Laboratory.dir/Item.cpp.i
-
-CMakeFiles/Laboratory.dir/Item.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Laboratory.dir/Item.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beatrice/CLionProjects/Laboratory/Item.cpp -o CMakeFiles/Laboratory.dir/Item.cpp.s
-
-CMakeFiles/Laboratory.dir/ToDoList.cpp.o: CMakeFiles/Laboratory.dir/flags.make
-CMakeFiles/Laboratory.dir/ToDoList.cpp.o: ../ToDoList.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/beatrice/CLionProjects/Laboratory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Laboratory.dir/ToDoList.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Laboratory.dir/ToDoList.cpp.o -c /home/beatrice/CLionProjects/Laboratory/ToDoList.cpp
-
-CMakeFiles/Laboratory.dir/ToDoList.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Laboratory.dir/ToDoList.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/beatrice/CLionProjects/Laboratory/ToDoList.cpp > CMakeFiles/Laboratory.dir/ToDoList.cpp.i
-
-CMakeFiles/Laboratory.dir/ToDoList.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Laboratory.dir/ToDoList.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/beatrice/CLionProjects/Laboratory/ToDoList.cpp -o CMakeFiles/Laboratory.dir/ToDoList.cpp.s
-
 # Object files for target Laboratory
 Laboratory_OBJECTS = \
-"CMakeFiles/Laboratory.dir/main.cpp.o" \
-"CMakeFiles/Laboratory.dir/Date.cpp.o" \
-"CMakeFiles/Laboratory.dir/Item.cpp.o" \
-"CMakeFiles/Laboratory.dir/ToDoList.cpp.o"
+"CMakeFiles/Laboratory.dir/main.cpp.o"
 
 # External object files for target Laboratory
 Laboratory_EXTERNAL_OBJECTS =
 
 Laboratory: CMakeFiles/Laboratory.dir/main.cpp.o
-Laboratory: CMakeFiles/Laboratory.dir/Date.cpp.o
-Laboratory: CMakeFiles/Laboratory.dir/Item.cpp.o
-Laboratory: CMakeFiles/Laboratory.dir/ToDoList.cpp.o
 Laboratory: CMakeFiles/Laboratory.dir/build.make
+Laboratory: libcore.a
 Laboratory: CMakeFiles/Laboratory.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/beatrice/CLionProjects/Laboratory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Laboratory"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/beatrice/CLionProjects/Laboratory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Laboratory"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Laboratory.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

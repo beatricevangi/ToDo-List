@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/beatrice/CLionProjects/Laboratory/cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/opt/clion-2019.2/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/opt/clion-2019.2/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -123,13 +123,65 @@ Laboratory/fast:
 	$(MAKE) -f CMakeFiles/Laboratory.dir/build.make CMakeFiles/Laboratory.dir/build
 .PHONY : Laboratory/fast
 
+#=============================================================================
+# Target rules for targets named core
+
+# Build rule for target.
+core: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 core
+.PHONY : core
+
+# fast build rule for target.
+core/fast:
+	$(MAKE) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/build
+.PHONY : core/fast
+
+#=============================================================================
+# Target rules for targets named runAllTests
+
+# Build rule for target.
+runAllTests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 runAllTests
+.PHONY : runAllTests
+
+# fast build rule for target.
+runAllTests/fast:
+	$(MAKE) -f test/CMakeFiles/runAllTests.dir/build.make test/CMakeFiles/runAllTests.dir/build
+.PHONY : runAllTests/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) -f test/lib/googletest/CMakeFiles/gtest.dir/build.make test/lib/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) -f test/lib/googletest/CMakeFiles/gtest_main.dir/build.make test/lib/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
+
 Date.o: Date.cpp.o
 
 .PHONY : Date.o
 
 # target to build an object file
 Date.cpp.o:
-	$(MAKE) -f CMakeFiles/Laboratory.dir/build.make CMakeFiles/Laboratory.dir/Date.cpp.o
+	$(MAKE) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Date.cpp.o
 .PHONY : Date.cpp.o
 
 Date.i: Date.cpp.i
@@ -138,7 +190,7 @@ Date.i: Date.cpp.i
 
 # target to preprocess a source file
 Date.cpp.i:
-	$(MAKE) -f CMakeFiles/Laboratory.dir/build.make CMakeFiles/Laboratory.dir/Date.cpp.i
+	$(MAKE) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Date.cpp.i
 .PHONY : Date.cpp.i
 
 Date.s: Date.cpp.s
@@ -147,7 +199,7 @@ Date.s: Date.cpp.s
 
 # target to generate assembly for a file
 Date.cpp.s:
-	$(MAKE) -f CMakeFiles/Laboratory.dir/build.make CMakeFiles/Laboratory.dir/Date.cpp.s
+	$(MAKE) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Date.cpp.s
 .PHONY : Date.cpp.s
 
 Item.o: Item.cpp.o
@@ -156,7 +208,7 @@ Item.o: Item.cpp.o
 
 # target to build an object file
 Item.cpp.o:
-	$(MAKE) -f CMakeFiles/Laboratory.dir/build.make CMakeFiles/Laboratory.dir/Item.cpp.o
+	$(MAKE) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Item.cpp.o
 .PHONY : Item.cpp.o
 
 Item.i: Item.cpp.i
@@ -165,7 +217,7 @@ Item.i: Item.cpp.i
 
 # target to preprocess a source file
 Item.cpp.i:
-	$(MAKE) -f CMakeFiles/Laboratory.dir/build.make CMakeFiles/Laboratory.dir/Item.cpp.i
+	$(MAKE) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Item.cpp.i
 .PHONY : Item.cpp.i
 
 Item.s: Item.cpp.s
@@ -174,7 +226,7 @@ Item.s: Item.cpp.s
 
 # target to generate assembly for a file
 Item.cpp.s:
-	$(MAKE) -f CMakeFiles/Laboratory.dir/build.make CMakeFiles/Laboratory.dir/Item.cpp.s
+	$(MAKE) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/Item.cpp.s
 .PHONY : Item.cpp.s
 
 ToDoList.o: ToDoList.cpp.o
@@ -183,7 +235,7 @@ ToDoList.o: ToDoList.cpp.o
 
 # target to build an object file
 ToDoList.cpp.o:
-	$(MAKE) -f CMakeFiles/Laboratory.dir/build.make CMakeFiles/Laboratory.dir/ToDoList.cpp.o
+	$(MAKE) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/ToDoList.cpp.o
 .PHONY : ToDoList.cpp.o
 
 ToDoList.i: ToDoList.cpp.i
@@ -192,7 +244,7 @@ ToDoList.i: ToDoList.cpp.i
 
 # target to preprocess a source file
 ToDoList.cpp.i:
-	$(MAKE) -f CMakeFiles/Laboratory.dir/build.make CMakeFiles/Laboratory.dir/ToDoList.cpp.i
+	$(MAKE) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/ToDoList.cpp.i
 .PHONY : ToDoList.cpp.i
 
 ToDoList.s: ToDoList.cpp.s
@@ -201,7 +253,7 @@ ToDoList.s: ToDoList.cpp.s
 
 # target to generate assembly for a file
 ToDoList.cpp.s:
-	$(MAKE) -f CMakeFiles/Laboratory.dir/build.make CMakeFiles/Laboratory.dir/ToDoList.cpp.s
+	$(MAKE) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/ToDoList.cpp.s
 .PHONY : ToDoList.cpp.s
 
 main.o: main.cpp.o
@@ -211,6 +263,7 @@ main.o: main.cpp.o
 # target to build an object file
 main.cpp.o:
 	$(MAKE) -f CMakeFiles/Laboratory.dir/build.make CMakeFiles/Laboratory.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -220,6 +273,7 @@ main.i: main.cpp.i
 # target to preprocess a source file
 main.cpp.i:
 	$(MAKE) -f CMakeFiles/Laboratory.dir/build.make CMakeFiles/Laboratory.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -229,6 +283,7 @@ main.s: main.cpp.s
 # target to generate assembly for a file
 main.cpp.s:
 	$(MAKE) -f CMakeFiles/Laboratory.dir/build.make CMakeFiles/Laboratory.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/core.dir/build.make CMakeFiles/core.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -237,9 +292,13 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
-	@echo "... Laboratory"
 	@echo "... edit_cache"
+	@echo "... Laboratory"
+	@echo "... rebuild_cache"
+	@echo "... core"
+	@echo "... runAllTests"
+	@echo "... gtest"
+	@echo "... gtest_main"
 	@echo "... Date.o"
 	@echo "... Date.i"
 	@echo "... Date.s"

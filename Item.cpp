@@ -4,11 +4,15 @@
 
 
 #include "Item.h"
+
+#include <utility>
 #include "Date.h"
 
 std::string Item::getName() const {
     return _name;
 }
+
+Item::~Item()= default;
 
 Date Item::getDate() const{
     return date;
@@ -21,8 +25,8 @@ void Item::editDate(Item &i, int day, int month, int year) {
     i.date.setYear(year);
 };
 
-void Item::rename(std::string &name) {
-    this->_name = name;
+void Item::rename(std::string name) {
+    this->_name = std::move(name);
     //std::cout<< "Event renamed to: " << _name <<std::endl;
 }
 

@@ -1,8 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Laboratory.dir/main.cpp.o"
-  "CMakeFiles/Laboratory.dir/Date.cpp.o"
-  "CMakeFiles/Laboratory.dir/Item.cpp.o"
-  "CMakeFiles/Laboratory.dir/ToDoList.cpp.o"
   "Laboratory.pdb"
   "Laboratory"
 )

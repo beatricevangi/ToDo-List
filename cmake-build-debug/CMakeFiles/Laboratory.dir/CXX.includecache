@@ -18,14 +18,6 @@ utility
 Date.h
 /home/beatrice/CLionProjects/Laboratory/Date.h
 
-/home/beatrice/CLionProjects/Laboratory/ToDoList.cpp
-fstream
--
-ToDoList.h
-/home/beatrice/CLionProjects/Laboratory/ToDoList.h
-algorithm
--
-
 /home/beatrice/CLionProjects/Laboratory/ToDoList.h
 utility
 -
@@ -33,4 +25,10 @@ list
 -
 Item.h
 /home/beatrice/CLionProjects/Laboratory/Item.h
+
+/home/beatrice/CLionProjects/Laboratory/main.cpp
+iostream
+-
+ToDoList.h
+/home/beatrice/CLionProjects/Laboratory/ToDoList.h
 
