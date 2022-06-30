@@ -17,7 +17,9 @@ public:
     const std::list<Item> &getList() const;
 
 public:
-    ToDoList(bool test = false);
+    ToDoList();
+
+    ~ToDoList()= default;
 
     void init();
 
@@ -31,12 +33,7 @@ public:
 
     void updateFile();
 
-   // std::list<Item>::iterator find(std::string name);
-    Item getItemNOTWORKING(int pos);
-
     std::list<Item>::iterator getItem(int pos);
-
-    void checkValidityItem(int pos, const std::string& operation);
 
     void displayToDo();
 

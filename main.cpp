@@ -3,7 +3,7 @@
 
 
 int main() {
-    ToDoList t(false);
+    ToDoList t;
     bool quit = false;
     int choice;
     std::cout << "WELCOME!" << std::endl;
@@ -42,7 +42,6 @@ int main() {
                     std::string name, d, m, y;
                     std::cout << "Enter the name of the new Item: " << std::endl;
                     std::getline(std::cin, name);
-                    //std::cin.ignore(100, '\n');
                     std::cout << "Enter day: " << std::endl;
                     std::cin >> d;
                     std::cin.ignore(100, '\n');
@@ -55,8 +54,6 @@ int main() {
                     t.insertItem(i);
                     std::cout << "Item created successfully." << std::endl;
                     t.updateFile();
-
-
                     break;
                 }
 
@@ -67,7 +64,6 @@ int main() {
                     std::cin >> pos;
                     auto item = t.getItem(pos);
                     t.deleteItem(*item);
-                    //t.checkValidityItem(pos, "delete");
                     t.updateFile();
                     break;
                 }
@@ -78,7 +74,6 @@ int main() {
                     std::cout << "Enter the number of the item you would like to mark as done: " << std::endl;
                     std::cin >> pos;
                     t.getItem(pos)->setDone(true);
-                    //t.checkValidityItem(pos, "check");
                     t.updateFile();
                     break;
                 }
@@ -90,7 +85,6 @@ int main() {
                     std::cin >> pos;
                     auto item = t.getItem(pos);
                     t.modifyItem(*item);
-                    //t.checkValidityItem(pos, "edit");
                     t.updateFile();
                     break;
                 }
@@ -120,7 +114,6 @@ int main() {
         }
         catch (std::runtime_error &e) {
             std::cerr << e.what() << std::endl;
-
         }
     }
 }

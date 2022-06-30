@@ -6,9 +6,8 @@
 #include "ToDoList.h"
 #include <algorithm>
 
-ToDoList::ToDoList(bool test) {
-    if (!test)
-        init();
+ToDoList::ToDoList() {
+    init();
 }
 
 void ToDoList::init() {
@@ -64,75 +63,63 @@ void ToDoList::updateFile() {
     my_file.close();
 }
 
-void ToDoList::modifyItem(Item &i) {    //TODO FARE CONTROLLO SU POSIZIONE ALTROVE E MEGLIO
-    bool isPresent = false;
-    for (const auto &tmp : list) {
-        if (tmp == i) {
-            isPresent = true;
+void ToDoList::modifyItem(Item &i) {
+    std::cout << "Select an option below: " << std::endl;
+    std::cout << "1: Rename Item" << std::endl;
+    std::cout << "2: Edit Date " << std::endl;
+    std::cout << "3: Mark as done/todo an Item" << std::endl;
+    std::cout << "0: Quit" << std::endl;
+
+    int choice;
+    std::cin >> choice;
+    switch (choice) {
+
+        case 0 : {
+            break;
+        }
+
+        case 1: {
+            std::cout << "Enter the new name: " << std::endl;
+            std::cin.ignore();
+            std::string newName;
+            std::getline(std::cin, newName, '\n');
+            i.rename(newName);
+
+            std::cout << "Item renamed successfully!" << std::endl;
+            updateFile();
+            break;
+        }
+
+        case 2: {
+            std::string d, m, y;
+            std::cout << "Enter day: " << std::endl;
+            std::cin >> d;
+            std::cin.ignore(1, '\n');
+            std::cout << "Enter month: " << std::endl;
+            std::cin >> m;
+            std::cin.ignore(1, '\n');
+            std::cout << "Enter year: " << std::endl;
+            std::cin >> y;
+            std::cin.ignore(1, '\n');
+            Item::editDate(i, stoi(d), stoi(m), stoi(y));
+
+            std::cout << "Date changed successfully!" << std::endl;
+            updateFile();
+            break;
+        }
+
+        case 3: {
+            bool flag = i.isDone();
+            i.setDone(!flag);
+            std::cout << "Item edited successfully!" << std::endl;
+            updateFile();
+            break;
+        }
+
+        default: {
+            std::cerr << "Invalid input, please enter a new one." << std::endl;
         }
     }
-    if (isPresent) {
-
-        std::cout << "Select an option below: " << std::endl;
-        std::cout << "1: Rename Item" << std::endl;
-        std::cout << "2: Edit Date " << std::endl;
-        std::cout << "3: Mark as done/todo an Item" << std::endl;
-        std::cout << "0: Quit" << std::endl;
-
-        int choice;
-        std::cin >> choice;
-        switch (choice) {
-            case 0 : {
-                break;
-            }
-
-            case 1: {
-                std::cout << "Enter the new name: " << std::endl;
-                std::cin.ignore();
-                std::string newName;
-                std::getline(std::cin, newName, '\n');
-
-                //std::cin >> newName;
-                //std::cin.ignore(1, '\n');
-                i.rename(newName);
-
-                std::cout << "Item renamed successfully!" << std::endl;
-                updateFile();
-                break;
-            }
-
-            case 2: {
-                std::string d, m, y;
-                std::cout << "Enter day: " << std::endl;
-                std::cin >> d;
-                std::cin.ignore(1, '\n');
-                std::cout << "Enter month: " << std::endl;
-                std::cin >> m;
-                std::cin.ignore(1, '\n');
-                std::cout << "Enter year: " << std::endl;
-                std::cin >> y;
-                std::cin.ignore(1, '\n');
-                Item::editDate(i, stoi(d), stoi(m), stoi(y));
-
-                std::cout << "Date changed successfully!" << std::endl;
-                updateFile();
-                break;
-            }
-
-            case 3: {
-                bool flag = i.isDone();
-                i.setDone(!flag);
-                std::cout << "Item edited successfully!" << std::endl;
-                updateFile();
-                break;
-            }
-
-            default: {
-                std::cerr << "Invalid input, please enter a new one." << std::endl;
-            }
-        }
-    } else
-        std::cerr << "Error: the item you are trying to edit is not present in the list" << std::endl;
 }
 
 void ToDoList::display() {
@@ -197,7 +184,6 @@ std::list<Item>::iterator ToDoList::getItem(int pos) {
         std::_List_iterator<Item> it = list.begin();
         std::advance(it, pos - 1);
         return it;
-    }
-    else
+    } else
         throw std::runtime_error("Invalid input!");
 }

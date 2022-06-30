@@ -304,9 +304,6 @@
 		<Unit filename="/home/beatrice/CLionProjects/Laboratory/test/ToDoListFixture.cpp">
 			<Option target="runAllTests"/>
 		</Unit>
-		<Unit filename="/home/beatrice/CLionProjects/Laboratory/test/ToDoListTest.cpp">
-			<Option target="runAllTests"/>
-		</Unit>
 		<Unit filename="/home/beatrice/CLionProjects/Laboratory/test/lib/googletest/src/gtest-all.cc">
 			<Option target="gtest"/>
 		</Unit>

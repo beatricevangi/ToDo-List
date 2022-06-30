@@ -17,15 +17,15 @@ private:
 
 public:
 
-    Item(std::string name = " ", int day = 1, int month = 1, int year = 1) : _name(std::move(name)), date(day, month, year) {}; //usando std move passo by value
+    Item(std::string name = " ", int day = 1, int month = 1, int year = 1) : _name(std::move(name)), date(day, month, year) {};
+
+    ~Item()= default;
 
     void setDone(bool flag) { this->done = flag; };
 
     bool isDone() { return this->done; };
 
     std::string getName() const;
-
-    void setDate(const Date &date);
 
     Date getDate() const;
 
@@ -34,8 +34,6 @@ public:
     void rename(std::string name);
 
     bool operator==(const Item &i) const;
-
-    virtual ~Item();
 };
 
 
