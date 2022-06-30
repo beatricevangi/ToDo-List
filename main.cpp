@@ -24,89 +24,103 @@ int main() {
         std::cin >> choice;
         std::cin.ignore(1, '\n');
 
-        switch (choice) {
+        try {
+            switch (choice) {
 
-            case 0: {
-                quit = true;
-                break;
-            }
+                case 0: {
+                    quit = true;
+                    break;
+                }
 
-            case 1 : {
-                t.display();
-                break;
-            }
+                case 1 : {
+                    t.display();
+                    break;
+                }
 
-            case 2 : {
-                std::string name, d, m, y;
-                std::cout << "Enter the name of the new Item: " << std::endl;
-                std::getline(std::cin, name);
-                //std::cin.ignore(100, '\n');
-                std::cout << "Enter day: " << std::endl;
-                std::cin >> d;
-                std::cin.ignore(100, '\n');
-                std::cout << "Enter month: " << std::endl;
-                std::cin >> m;
-                std::cin.ignore(100, '\n');
-                std::cout << "Enter year: " << std::endl;
-                std::cin >> y;
-                Item i(name, std::stoi(d), std::stoi(m), std::stoi(y));
-                t.insertItem(i);
-                std::cout << "Item created successfully." << std::endl;
-                t.updateFile();
-                break;
-            }
+                case 2 : {
 
-            case 3 : {
-                t.display();
-                int pos;
-                std::cout << "Enter the number of the new Item you would like to delete: " << std::endl;
-                std::cin >> pos;
-                t.checkValidityItem(pos, "delete");
-                t.updateFile();
-                break;
-            }
+                    std::string name, d, m, y;
+                    std::cout << "Enter the name of the new Item: " << std::endl;
+                    std::getline(std::cin, name);
+                    //std::cin.ignore(100, '\n');
+                    std::cout << "Enter day: " << std::endl;
+                    std::cin >> d;
+                    std::cin.ignore(100, '\n');
+                    std::cout << "Enter month: " << std::endl;
+                    std::cin >> m;
+                    std::cin.ignore(100, '\n');
+                    std::cout << "Enter year: " << std::endl;
+                    std::cin >> y;
+                    Item i(name, std::stoi(d), std::stoi(m), std::stoi(y));
+                    t.insertItem(i);
+                    std::cout << "Item created successfully." << std::endl;
+                    t.updateFile();
 
-            case 4 : {
-                t.display();
-                int pos;
-                std::cout << "Enter the number of the item you would like to mark as done: " << std::endl;
-                std::cin >> pos;
-                t.checkValidityItem(pos, "check");
-                t.updateFile();
-                break;
-            }
 
-            case 5 : {
-                t.display();
-                int pos;
-                std::cout << "Enter the number of the item you would like to edit: " << std::endl;
-                std::cin >> pos;
-                t.checkValidityItem(pos, "edit");
-                t.updateFile();
-                break;
-            }
+                    break;
+                }
 
-            case 6: {
-                t.displayToDo();
-                break;
-            }
+                case 3 : {
+                    t.display();
+                    int pos;
+                    std::cout << "Enter the number of the new Item you would like to delete: " << std::endl;
+                    std::cin >> pos;
+                    auto item = t.getItem(pos);
+                    t.deleteItem(*item);
+                    //t.checkValidityItem(pos, "delete");
+                    t.updateFile();
+                    break;
+                }
 
-            case 7: {
-                t.removeDone();
-                std::cout << "Operation completed!" << std::endl;
-                break;
-            }
+                case 4 : {
+                    t.display();
+                    int pos;
+                    std::cout << "Enter the number of the item you would like to mark as done: " << std::endl;
+                    std::cin >> pos;
+                    t.getItem(pos)->setDone(true);
+                    //t.checkValidityItem(pos, "check");
+                    t.updateFile();
+                    break;
+                }
 
-            case 8: {
-                t.clearAll();
-                t.updateFile();
-                std::cout << "Operation completed!" << std::endl;
-                break;
-            }
+                case 5 : {
+                    t.display();
+                    int pos;
+                    std::cout << "Enter the number of the item you would like to edit: " << std::endl;
+                    std::cin >> pos;
+                    auto item = t.getItem(pos);
+                    t.modifyItem(*item);
+                    //t.checkValidityItem(pos, "edit");
+                    t.updateFile();
+                    break;
+                }
 
-            default: {
-                std::cerr << "Invalid input, please enter a new one." << std::endl;
+                case 6: {
+                    t.displayToDo();
+                    break;
+                }
+
+                case 7: {
+                    t.removeDone();
+                    std::cout << "Operation completed!" << std::endl;
+                    break;
+                }
+
+                case 8: {
+                    t.clearAll();
+                    t.updateFile();
+                    std::cout << "Operation completed!" << std::endl;
+                    break;
+                }
+
+                default: {
+                    std::cerr << "Invalid input, please enter a new one." << std::endl;
+                }
             }
+        }
+        catch (std::runtime_error &e) {
+            std::cerr << e.what() << std::endl;
+
         }
     }
 }

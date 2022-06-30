@@ -200,23 +200,4 @@ std::list<Item>::iterator ToDoList::getItem(int pos) {
     }
     else
         throw std::runtime_error("Invalid input!");
-
-}
-
-void ToDoList::checkValidityItem(int pos, const std::string &operation) {
-    if (pos <= list.size() && pos > 0) {
-        auto item = getItem(pos);
-        if (operation == "edit") {
-            modifyItem(*item);
-        } else if (operation == "delete") {
-            deleteItem(*item);
-            std::cout << "Item deleted successfully." << std::endl;
-
-        } else if (operation == "check") {
-            item->setDone(true);
-            std::cout << "Operation completed successfully" << std::endl;
-
-        }
-    } else
-        std::cerr << "Operation failed, invalid input";
 }
