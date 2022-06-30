@@ -6,8 +6,9 @@
 #include "ToDoList.h"
 #include <algorithm>
 
-ToDoList::ToDoList() {
-    init();
+ToDoList::ToDoList(bool test) {
+    if (!test)
+        init();
 }
 
 void ToDoList::init() {
@@ -41,7 +42,6 @@ void ToDoList::init() {
 
 void ToDoList::deleteItem(Item &i) {
     list.remove(i);
-    updateFile();
 }
 
 void ToDoList::insertItem(Item &item) {
@@ -136,7 +136,7 @@ void ToDoList::modifyItem(Item &i) {    //TODO FARE CONTROLLO SU POSIZIONE ALTRO
 }
 
 void ToDoList::display() {
-    std::cout << "------------------------ T O   D O   L I S T ------------------------" << std::endl;
+    std::cout << std::endl;
     int i = 1;
     for (Item tmp : list) {
         std::cout << "ITEM " << i << ":    ";
@@ -150,9 +150,12 @@ void ToDoList::display() {
         std::cout << tmp.getName() << std::endl;
         i++;
     }
+    if (i == 1)
+        std::cout << "List is empty " << std::endl;
 }
 
 void ToDoList::displayToDo() {
+    std::cout << std::endl;
     int i = 1;
     for (Item tmp : list) {
         if (!tmp.isDone()) {
@@ -163,6 +166,8 @@ void ToDoList::displayToDo() {
         }
         i++;
     }
+    if (i == 1)
+        std::cout << "List is empty " << std::endl;
 }
 
 void ToDoList::removeDone() {
@@ -172,23 +177,30 @@ void ToDoList::removeDone() {
         if (item->isDone())
             deleteItem(*item);
     }
+    updateFile();
+}
 
+void ToDoList::clearAll() {
+    int length = list.size();
+    for (int i = 0; i < length; i++) {
+        auto item = getItem(1);
+        deleteItem(*item);
+    }
 }
 
 const std::list<Item> &ToDoList::getList() const {
     return list;
 }
 
-Item ToDoList::getItemNOTWORKING(int pos) {
-    std::_List_iterator<Item> it = list.begin();
-    std::advance(it, pos - 1);
-    return *it;
-}
-
 std::list<Item>::iterator ToDoList::getItem(int pos) {
-    std::_List_iterator<Item> it = list.begin();
-    std::advance(it, pos - 1);
-    return it;
+    if (pos <= list.size() && pos > 0) {
+        std::_List_iterator<Item> it = list.begin();
+        std::advance(it, pos - 1);
+        return it;
+    }
+    else
+        throw std::runtime_error("Invalid input!");
+
 }
 
 void ToDoList::checkValidityItem(int pos, const std::string &operation) {

@@ -23,18 +23,17 @@ TEST_F(ItemSuite, Constructor) {
     ASSERT_EQ(18, i.getDate().getDay());
     ASSERT_EQ(7, i.getDate().getMonth());
     ASSERT_EQ(2022, i.getDate().getYear());
-
     ASSERT_FALSE(i.isDone());
 }
 
 
-TEST_F(ItemSuite, TestSetterDone) {
+TEST_F(ItemSuite, TestSetterCompleted) {
     Item i("Pizza", 29, 6, 2022);
     i.setDone(true);
     ASSERT_TRUE(i.isDone());
 }
 
-TEST_F(ItemSuite, TestEditDate){
+TEST_F(ItemSuite, TestEditDate) {
     Item i("Pizza", 29, 6, 2022);
     i.editDate(i, 28, 7, 2021);
     ASSERT_EQ(28, i.getDate().getDay());
@@ -42,7 +41,8 @@ TEST_F(ItemSuite, TestEditDate){
     ASSERT_EQ(2021, i.getDate().getYear());
 }
 
-TEST_F(ItemSuite, TestEditName){
+TEST_F(ItemSuite, TestEditName) {
     Item i("Pizza", 29, 6, 2022);
     i.rename("Grigliata");
+    ASSERT_EQ("Grigliata", i.getName());
 }

@@ -3,7 +3,7 @@
 
 
 int main() {
-    ToDoList t;
+    ToDoList t(false);
     bool quit = false;
     int choice;
     std::cout << "WELCOME!" << std::endl;
@@ -18,6 +18,7 @@ int main() {
         std::cout << "5: Edit an item" << std::endl;
         std::cout << "6: View items that are not completed" << std::endl;
         std::cout << "7: Delete already completed items " << std::endl;
+        std::cout << "8: Delete all items" << std::endl;
         std::cout << "0: Quit" << std::endl;
 
         std::cin >> choice;
@@ -68,7 +69,7 @@ int main() {
             case 4 : {
                 t.display();
                 int pos;
-                std::cout << "Enter the number of the item you would like to checkkk: " << std::endl;
+                std::cout << "Enter the number of the item you would like to mark as done: " << std::endl;
                 std::cin >> pos;
                 t.checkValidityItem(pos, "check");
                 t.updateFile();
@@ -92,6 +93,13 @@ int main() {
 
             case 7: {
                 t.removeDone();
+                std::cout << "Operation completed!" << std::endl;
+                break;
+            }
+
+            case 8: {
+                t.clearAll();
+                t.updateFile();
                 std::cout << "Operation completed!" << std::endl;
                 break;
             }

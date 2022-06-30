@@ -27,7 +27,6 @@ void Item::editDate(Item &i, int day, int month, int year) {
 
 void Item::rename(std::string name) {
     this->_name = std::move(name);
-    //std::cout<< "Event renamed to: " << _name <<std::endl;
 }
 
 void Item::setDate(const Date &_date) {

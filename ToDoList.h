@@ -17,7 +17,7 @@ public:
     const std::list<Item> &getList() const;
 
 public:
-    ToDoList();
+    ToDoList(bool test = false);
 
     void init();
 
@@ -41,6 +41,8 @@ public:
     void displayToDo();
 
     void removeDone();
+
+    void clearAll();
 };
 
 
