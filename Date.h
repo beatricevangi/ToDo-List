@@ -16,9 +16,9 @@ private:
 public:
     Date(unsigned int day = 1, unsigned int month = 1, unsigned int year = 2022);
 
-    static void checkValidity(unsigned int _day, unsigned int _month, unsigned int _year);
+    void checkValidity(unsigned int day, unsigned int month, unsigned int year);
 
-    static unsigned int countMonthDays(unsigned int month, unsigned int year);
+    unsigned int countMonthDays(unsigned int month, unsigned int year);
 
     void displayDate();
 
@@ -28,11 +28,11 @@ public:
 
     unsigned int getYear() { return this->year; }
 
-    void setDay(unsigned int _day) { Date::day = _day; }
+    void setDay(unsigned int day) { Date::day = day; } //TODO check Validity here
 
-    void setMonth(unsigned int _month) { Date::month = _month; }
+    void setMonth(unsigned int month) { Date::month = month; } //TODO check Validity here
 
-    void setYear(unsigned int _year) { Date::year = _year; }
+    void setYear(unsigned int year) { Date::year = year; } //TODO check Validity here
 
     bool operator==(const Date &date) const;
 };

@@ -18,7 +18,7 @@ public:
 
     ToDoList();
 
-    ~ToDoList()= default;
+    ~ToDoList() = default;
 
     void init();
 

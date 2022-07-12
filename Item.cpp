@@ -9,7 +9,7 @@
 #include "Date.h"
 
 std::string Item::getName() const {
-    return _name;
+    return name;
 }
 
 Date Item::getDate() const{
@@ -24,9 +24,9 @@ void Item::editDate(Item &i, int day, int month, int year) {
 };
 
 void Item::rename(std::string name) {
-    this->_name = std::move(name);
+    this->name = std::move(name);
 }
 
 bool Item::operator==(const Item &i) const {
-    return i._name == _name && i.date == date;
+    return i.name == name && i.date == date;
 }
