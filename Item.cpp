@@ -30,4 +30,3 @@ void Item::rename(std::string name) {
 bool Item::operator==(const Item &i) const {
     return i._name == _name && i.date == date;
 }
-

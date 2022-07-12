@@ -16,7 +16,6 @@ private:
     bool done = false;
 
 public:
-
     Item(std::string name = " ", int day = 1, int month = 1, int year = 1) : _name(std::move(name)), date(day, month, year) {};
 
     ~Item()= default;

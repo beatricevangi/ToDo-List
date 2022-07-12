@@ -33,6 +33,7 @@ TEST_F(ItemSuite, TestSetterCompleted) {
     ASSERT_TRUE(i.isDone());
 }
 
+
 TEST_F(ItemSuite, TestEditDate) {
     Item i("Pizza", 29, 6, 2022);
     i.editDate(i, 28, 7, 2021);
@@ -40,6 +41,7 @@ TEST_F(ItemSuite, TestEditDate) {
     ASSERT_EQ(7, i.getDate().getMonth());
     ASSERT_EQ(2021, i.getDate().getYear());
 }
+
 
 TEST_F(ItemSuite, TestEditName) {
     Item i("Pizza", 29, 6, 2022);

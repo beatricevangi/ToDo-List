@@ -16,7 +16,7 @@ void ToDoList::init() {
     if (!my_file) {
         std::cerr << "Error: file could not be opened" << std::endl;
     } else {
-        while (!my_file.eof()) {                        // keep reading until end-of-file
+        while (!my_file.eof()) {
             std::string temporary, d, m, y, completed;
 
             while (std::getline(my_file, temporary)) {
@@ -46,7 +46,6 @@ void ToDoList::deleteItem(Item &i) {
 void ToDoList::insertItem(Item &item) {
     list.push_back(item);
 }
-
 
 void ToDoList::updateFile() {
     std::ofstream my_file;
@@ -154,7 +153,7 @@ void ToDoList::displayToDo() {
         i++;
     }
     if (i == 1)
-        std::cout << "List is empty " << std::endl;
+        std::cout << "List is empty!" << std::endl;
 }
 
 void ToDoList::removeDone() {

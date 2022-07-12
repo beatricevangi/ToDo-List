@@ -16,7 +16,6 @@ private:
 public:
     const std::list<Item> &getList() const;
 
-public:
     ToDoList();
 
     ~ToDoList()= default;
