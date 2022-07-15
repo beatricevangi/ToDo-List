@@ -18,7 +18,7 @@ private:
 public:
     Item(std::string name = " ", int day = 1, int month = 1, int year = 1) : name(std::move(name)), date(day, month, year) {};
 
-    ~Item()= default;
+    ~Item() = default;
 
     void setDone(bool flag) { this->done = flag; };
 
@@ -28,9 +28,11 @@ public:
 
     Date getDate() const;
 
-    static void editDate(Item &i, int day, int month, int year);
+    void editDate(int day, int month, int year);
 
-    void rename(std::string name);
+    void editName(std::string name);
+
+    std::string toString();
 
     bool operator==(const Item &i) const;
 };

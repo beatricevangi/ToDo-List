@@ -16,17 +16,21 @@ Date Item::getDate() const{
     return date;
 }
 
-void Item::editDate(Item &i, int day, int month, int year) {
-    i.date.checkValidity(day, month, year);
-    i.date.setDay(day);
-    i.date.setMonth(month);
-    i.date.setYear(year);
+void Item::editDate(int day, int month, int year) {
+    this->date.setDate(day, month, year);
 };
 
-void Item::rename(std::string name) {
+void Item::editName(std::string name) {
     this->name = std::move(name);
 }
 
 bool Item::operator==(const Item &i) const {
     return i.name == name && i.date == date;
+}
+
+std::string Item::toString() {
+    std::string check = "TO DO";
+    if (this->isDone())
+        check = "DONE";
+    return "Date: " + this->getDate().toString() + "    Status: " + check + "    Activity: " + this->getName() + "\n";
 }
