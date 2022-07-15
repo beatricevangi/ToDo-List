@@ -10,10 +10,9 @@ class ItemSuite : public ::testing::Test {
 
 protected:
     virtual void SetUp() {
-        i.editDate(i, 18, 7, 2022);
-        i.rename("Pizza");
+        i.editDate(18, 7, 2022);
+        i.editName("Pizza");
     }
-
     Item i;
 };
 
@@ -28,15 +27,13 @@ TEST_F(ItemSuite, Constructor) {
 
 
 TEST_F(ItemSuite, TestSetterCompleted) {
-    Item i("Pizza", 29, 6, 2022);
     i.setDone(true);
     ASSERT_TRUE(i.isDone());
 }
 
 
 TEST_F(ItemSuite, TestEditDate) {
-    Item i("Pizza", 29, 6, 2022);
-    i.editDate(i, 28, 7, 2021);
+    i.editDate(28, 7, 2021);
     ASSERT_EQ(28, i.getDate().getDay());
     ASSERT_EQ(7, i.getDate().getMonth());
     ASSERT_EQ(2021, i.getDate().getYear());
@@ -44,7 +41,6 @@ TEST_F(ItemSuite, TestEditDate) {
 
 
 TEST_F(ItemSuite, TestEditName) {
-    Item i("Pizza", 29, 6, 2022);
-    i.rename("Grigliata");
+    i.editName("Grigliata");
     ASSERT_EQ("Grigliata", i.getName());
 }
