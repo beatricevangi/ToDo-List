@@ -4,15 +4,11 @@
 
 #include <fstream>
 #include "ToDoList.h"
-#include <algorithm>
 
 ToDoList::ToDoList() {
-    init();
-}
-
-void ToDoList::init() {
     std::fstream my_file;
-    my_file.open("/home/beatrice/CLionProjects/Laboratory/File.txt", std::ios::in);
+    my_file.open(file_path, std::ios::in);
+
     if (!my_file) {
         std::cerr << "Error: file could not be opened" << std::endl;
     } else {
@@ -37,6 +33,7 @@ void ToDoList::init() {
         }
         my_file.close();
     }
+    this->name = "Summer to-dos";
 }
 
 void ToDoList::deleteItem(Item &i) {
@@ -49,7 +46,7 @@ void ToDoList::insertItem(Item &item) {
 
 void ToDoList::updateFile() {
     std::ofstream my_file;
-    my_file.open("/home/beatrice/CLionProjects/Laboratory/File.txt", std::ios::out);
+    my_file.open(file_path, std::ios::out);
 
     for (auto item : list) {
         my_file << item.getName() << std::endl;
@@ -60,100 +57,6 @@ void ToDoList::updateFile() {
         my_file << std::endl;
     }
     my_file.close();
-}
-
-void ToDoList::modifyItem(Item &i) {
-    std::cout << "Select an option below: " << std::endl;
-    std::cout << "1: Rename Item" << std::endl;
-    std::cout << "2: Edit Date " << std::endl;
-    std::cout << "3: Mark as done/todo an Item" << std::endl;
-    std::cout << "0: Quit" << std::endl;
-
-    int choice;
-    std::cin >> choice;
-    switch (choice) {
-
-        case 0 : {
-            break;
-        }
-
-        case 1: {
-            std::cout << "Enter the new name: " << std::endl;
-            std::cin.ignore();
-            std::string newName;
-            std::getline(std::cin, newName, '\n');
-            i.rename(newName);
-
-            std::cout << "Item renamed successfully!" << std::endl;
-            updateFile();
-            break;
-        }
-
-        case 2: {
-            std::string d, m, y;
-            std::cout << "Enter day: " << std::endl;
-            std::cin >> d;
-            std::cin.ignore(1, '\n');
-            std::cout << "Enter month: " << std::endl;
-            std::cin >> m;
-            std::cin.ignore(1, '\n');
-            std::cout << "Enter year: " << std::endl;
-            std::cin >> y;
-            std::cin.ignore(1, '\n');
-            Item::editDate(i, stoi(d), stoi(m), stoi(y));
-
-            std::cout << "Date changed successfully!" << std::endl;
-            updateFile();
-            break;
-        }
-
-        case 3: {
-            bool flag = i.isDone();
-            i.setDone(!flag);
-            std::cout << "Item edited successfully!" << std::endl;
-            updateFile();
-            break;
-        }
-
-        default: {
-            std::cerr << "Invalid input, please enter a new one." << std::endl;
-        }
-    }
-}
-
-void ToDoList::display() {
-    std::cout << std::endl;
-    int i = 1;
-    for (Item tmp : list) {
-        std::cout << "ITEM " << i << ":    ";
-        tmp.getDate().displayDate();
-        std::cout << "     ";
-        if (tmp.isDone()) {
-            std::cout << "DONE";
-        } else
-            std::cout << "TO DO";
-        std::cout << "     ";
-        std::cout << tmp.getName() << std::endl;
-        i++;
-    }
-    if (i == 1)
-        std::cout << "List is empty " << std::endl;
-}
-
-void ToDoList::displayToDo() {
-    std::cout << std::endl;
-    int i = 1;
-    for (Item tmp : list) {
-        if (!tmp.isDone()) {
-            std::cout << "ITEM " << i << ":    ";
-            tmp.getDate().displayDate();
-            std::cout << "     TO DO     ";
-            std::cout << tmp.getName() << std::endl;
-        }
-        i++;
-    }
-    if (i == 1)
-        std::cout << "List is empty!" << std::endl;
 }
 
 void ToDoList::removeDone() {
@@ -174,10 +77,6 @@ void ToDoList::clearAll() {
     }
 }
 
-const std::list<Item> &ToDoList::getList() const {
-    return list;
-}
-
 std::list<Item>::iterator ToDoList::getItem(int pos) {
     if (pos <= list.size() && pos > 0) {
         std::_List_iterator<Item> it = list.begin();
@@ -185,4 +84,53 @@ std::list<Item>::iterator ToDoList::getItem(int pos) {
         return it;
     } else
         throw std::runtime_error("Invalid input!");
+}
+
+void ToDoList::setName(const std::string &name) {
+    ToDoList::name = name;
+}
+
+void ToDoList::toggle(Item &i) {
+    i.setDone(!i.isDone());
+}
+
+
+int ToDoList::countItems() {
+    return list.size();
+}
+
+int ToDoList::countItemsToBeDone() {
+    int counter = 0;
+    for (int i = 1; i <= list.size(); i++) {
+        auto item = getItem(i);
+        if (!item->isDone())
+            counter++;
+    }
+    return counter;
+}
+
+const std::string &ToDoList::getName() const {
+    return name;
+}
+
+std::string ToDoList::toString() {
+    std::string str;
+    int i = 1;
+    for (auto item : list) {
+        str += std::to_string(i) + ")    " + item.toString();
+        i++;
+    }
+    if (i == 1)
+        std::cout << "List is empty!" << std::endl;
+    return str;
+}
+
+std::string ToDoList::toStringToBeDone() {
+    std::string str;
+    for (auto item : list) {
+        if (!item.isDone()) {
+            str += item.toString();
+        }
+    }
+    return str;
 }

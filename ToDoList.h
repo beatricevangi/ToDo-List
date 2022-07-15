@@ -7,38 +7,45 @@
 
 #include <utility>
 #include <list>
+#include <iostream>
 #include "Item.h"
 
 class ToDoList {
 private:
     std::list<Item> list;
+    std::string name;
+    std::string file_path = "../File.txt";
 
 public:
-    const std::list<Item> &getList() const;
+    const std::string &getName() const;
 
     ToDoList();
 
     ~ToDoList() = default;
 
-    void init();
+    void setName(const std::string &name);
+
+    std::list<Item>::iterator getItem(int pos);
 
     void deleteItem(Item &i);
 
     void insertItem(Item &i);
 
-    void modifyItem(Item &i);
+    void toggle(Item &i);
 
-    void display();
+    int countItems();
+
+    int countItemsToBeDone();
 
     void updateFile();
 
-    std::list<Item>::iterator getItem(int pos);
-
-    void displayToDo();
-
-    void removeDone();
+    void removeDone(); //cancella attività completate
 
     void clearAll();
+
+    std::string toString();
+
+    std::string toStringToBeDone(); //ritorna una stringa delle attività da fare
 };
 
 
