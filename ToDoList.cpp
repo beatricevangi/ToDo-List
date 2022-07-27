@@ -77,7 +77,7 @@ void ToDoList::clearAll() {
     }
 }
 
-std::list<Item>::iterator ToDoList::getItem(int pos) {
+std::list<Item>::iterator ToDoList::getItem(int pos)  {
     if (pos <= list.size() && pos > 0) {
         std::_List_iterator<Item> it = list.begin();
         std::advance(it, pos - 1);
@@ -113,7 +113,7 @@ const std::string &ToDoList::getName() const {
     return name;
 }
 
-std::string ToDoList::toString() {
+std::string ToDoList::toString() const {
     std::string str;
     int i = 1;
     for (auto item : list) {
@@ -125,7 +125,7 @@ std::string ToDoList::toString() {
     return str;
 }
 
-std::string ToDoList::toStringToBeDone() {
+std::string ToDoList::toStringToBeDone() const {
     std::string str;
     for (auto item : list) {
         if (!item.isDone()) {

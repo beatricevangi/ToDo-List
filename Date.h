@@ -21,13 +21,13 @@ private:
 public:
     Date(unsigned int day = 1, unsigned int month = 1, unsigned int year = 2022);
 
-    std::string toString();
+    std::string toString() const;
 
-    unsigned int getDay() { return this->day; }
+    unsigned int getDay() const { return this->day; }
 
-    unsigned int getMonth() { return this->month; }
+    unsigned int getMonth() const { return this->month; }
 
-    unsigned int getYear() { return this->year; }
+    unsigned int getYear() const { return this->year; }
 
     void setDate(unsigned int day, unsigned int month, unsigned int year);
 

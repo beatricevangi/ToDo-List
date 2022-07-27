@@ -74,7 +74,7 @@ int main() {
                 case 4 : {
                     std::cout << t.toString();
                     int pos;
-                    std::cout << "Enter the number of the item you would like to mark as done: " << std::endl;
+                    std::cout << "Enter the number of the item you would like to toggle: " << std::endl;
                     std::cin >> pos;
                     t.toggle(*t.getItem(pos));
                     t.updateFile();
@@ -147,7 +147,6 @@ int main() {
                     std::getline(std::cin, newName, '\n');
                     t.setName(newName);
                     std::cout << "Operation completed successfully!" << std::endl;
-
                     break;
                 }
 

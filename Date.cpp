@@ -36,6 +36,6 @@ void Date::setDate(unsigned int day, unsigned int month, unsigned int year){
     this->year = year;
 }
 
-std::string Date::toString() {
+std::string Date::toString() const {
     return std::to_string(day) + "/" + std::to_string(month) + "/" + std::to_string(year);
 }

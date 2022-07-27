@@ -43,9 +43,9 @@ public:
 
     void clearAll();
 
-    std::string toString();
+    std::string toString() const;
 
-    std::string toStringToBeDone(); //ritorna una stringa delle attività da fare
+    std::string toStringToBeDone() const; //ritorna una stringa delle attività da fare
 };
 
 

@@ -22,7 +22,7 @@ public:
 
     void setDone(bool flag) { this->done = flag; };
 
-    bool isDone() { return this->done; };
+    bool isDone() const { return this->done; };
 
     std::string getName() const;
 
@@ -32,7 +32,7 @@ public:
 
     void editName(std::string name);
 
-    std::string toString();
+    std::string toString() const;
 
     bool operator==(const Item &i) const;
 };

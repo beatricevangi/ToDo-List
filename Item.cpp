@@ -28,7 +28,7 @@ bool Item::operator==(const Item &i) const {
     return i.name == name && i.date == date;
 }
 
-std::string Item::toString() {
+std::string Item::toString() const {
     std::string check = "TO DO";
     if (this->isDone())
         check = "DONE";
